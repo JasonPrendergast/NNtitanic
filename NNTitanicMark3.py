@@ -1,10 +1,7 @@
-#from create_sentiment_featuresets import create_feature_sets_and_labels
 import tensorflow as tf
-#from tensorflow.examples.tutorials.mnist import input_data
 import pickle
 import numpy as np
-# pickle.load(open("sentiment_set.pickle","rb"))
-#train_x,train_y,test_x,test_y = create_feature_sets_and_labels('pos.txt','neg.txt')
+
 train_x,train_y,test_x,test_y = pickle.load(open("titanic_set.pickle","rb"))
 
 n_nodes_hl1 = 1500
@@ -96,24 +93,12 @@ saver = tf.train.import_meta_graph('./model.ckpt.meta')
 
 def use_neural_network(input_data):
     prediction = neural_network_model(x)
-   # with open('lexicon-2500-2638.pickle','rb') as f:
-   #     lexicon = pickle.load(f)
-        
+          
     with tf.Session() as sess:
-        #tf.reset_default_graph()
+        
         sess.run(tf.global_variables_initializer())
-        #tf.reset_default_graph()
+        
         saver.restore(sess,"model.ckpt")
-        #print('model restored')
-       # current_words = word_tokenize(input_data.lower())
-       # current_words = [lemmatizer.lemmatize(i) for i in current_words]
-        features = #np.zeros(len(lexicon))
-
-       # for word in current_words:
-       #    if word.lower() in lexicon:
-       #         index_value = lexicon.index(word.lower())
-                # OR DO +=1, test both
-       #         features[index_value] += 1
 
         features = np.array(list(features))
         # pos: [1,0] , argmax: 0
@@ -123,7 +108,6 @@ def use_neural_network(input_data):
           #  print('Positive:',input_data)
            return 'Positive:',input_data
         elif result[0] == 1:
-            #Print('Neg')
           #  print('Negative:',input_data)
             return 'Negative:',input_data
             
