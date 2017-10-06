@@ -51,26 +51,12 @@ def create_feature_sets_and_labels(X,y,test_size = 0.1):
             #features +=X[i],tempnp
             features = list(X[i])
             featureset.append([features,temp])
-            #print('ping')
-            #features +=X[i],([0,1])
-    
-    #print(featureset)
-    
-                       #features += 
-                   
-	
-	#features += sample_handling('pos.txt',lexicon,[1,0])
-	#features += sample_handling('neg.txt',lexicon,[0,1])
-
+            
     random.shuffle(featureset)
     features = np.array(featureset)
 
     testing_size = int(test_size*len(features))
-    #train_x,test_x,train_y,test_y = cross_validation.train_test_split(X,y,test_size=0.2)
-    
-
-    
-
+   
     train_x = list(features[:,0][:-testing_size])
     train_y = list(features[:,1][:-testing_size])
     test_x = list(features[:,0][-testing_size:])
@@ -87,7 +73,7 @@ def handle_non_numerical_data(df):
            return text_digit_vals[val]
 #       looking for data type within the olumn which is not a number value
         if df[column].dtype != np.int64 and df[column].dtype != np.float64:
-           # print(df[column].name)
+           
             column_contents = df[column].values.tolist()
             unique_elements = set(column_contents)
             x = 0
@@ -128,10 +114,7 @@ if __name__ == '__main__':
     #against after the classifier makes a prediction eg test data for the model
     y = np.array(df['survived'])
 
-#
 
-#with open('titanic_set.pickle','wb') as f:
-#    pickle.dump([train_x,train_y,test_x,test_y],f)
     train_x,train_y,test_x,test_y = create_feature_sets_and_labels(X,y)
     # if you want to pickle this data:
     with open('titanic_set.pickle','wb') as f:
