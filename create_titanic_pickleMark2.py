@@ -26,9 +26,6 @@ body Body Identification Number
 home.dest Home/Destination
 '''
 
-
-
-
 def create_feature_sets_and_labels(X,y,test_size = 0.1):
     train_x,test_x,train_y,test_y = cross_validation.train_test_split(X,y,test_size=0.2)
 	#lexicon = create_lexicon(pos,neg)
