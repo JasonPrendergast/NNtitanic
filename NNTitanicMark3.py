@@ -97,6 +97,10 @@ def train_neural_network(x):
 
 saver = tf.train.import_meta_graph('./model.ckpt.meta')
 
+############################################################################
+#                            Test Network                                  #
+############################################################################
+
 def use_neural_network(input_data):
     prediction = neural_network_model(x)
           
