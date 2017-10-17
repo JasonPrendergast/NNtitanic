@@ -52,7 +52,9 @@ def neural_network_model(data):
 
     return output
 
-
+############################################################################
+#                            Train Network                                 #
+############################################################################
 def train_neural_network(x):
 	prediction = neural_network_model(x)
 	cost =tf.reduce_sum(tf.nn.softmax_cross_entropy_with_logits(logits=prediction, labels=y))
