@@ -1,7 +1,9 @@
 import tensorflow as tf
 import pickle
 import numpy as np
-
+############################################################################
+#                            Create Globals                                #
+############################################################################
 train_x,train_y,test_x,test_y = pickle.load(open("titanic_set.pickle","rb"))
 
 n_nodes_hl1 = 1500
@@ -32,7 +34,9 @@ output_layer = {'f_fum':None,
                 'bias':tf.Variable(tf.random_normal([n_classes])),}
 
 
-# Nothing changes
+############################################################################
+#                            Create Network shape                          #
+############################################################################
 def neural_network_model(data):
 
     l1 = tf.add(tf.matmul(data,hidden_1_layer['weight']), hidden_1_layer['bias'])
